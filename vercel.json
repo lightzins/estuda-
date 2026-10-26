@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "",
+  "installCommand": "",
+  "outputDirectory": "plataforma-estudos",
+  "cleanUrls": false,
+  "redirects": [
+    {
+      "source": "/plataforma-estudos/:path*",
+      "destination": "/:path*",
+      "permanent": false
+    }
+  ]
+}
