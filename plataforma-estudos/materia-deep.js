@@ -72,11 +72,11 @@
     const xy=([x,y])=>[210+x*27,170-y*27];
     let grid='';
     for(let n=-5;n<=5;n++){
-      grid+='<line x1="'+(210+n*27)+'" y1="20" x2="'+(210+n*27)+'" y2="320" stroke="#e6ece9"/><line x1="60" y1="'+(170+n*27)+'" x2="360" y2="'+(170+n*27)+'" stroke="#e6ece9"/>';
-      if(n)grid+='<text x="'+(210+n*27)+'" y="186" text-anchor="middle" font-size="11" fill="#586c6c">'+n+'</text><text x="197" y="'+(174-n*27)+'" text-anchor="end" font-size="11" fill="#586c6c">'+n+'</text>';
+      grid+='<line x1="'+(210+n*27)+'" y1="20" x2="'+(210+n*27)+'" y2="320" stroke="var(--line)"/><line x1="60" y1="'+(170+n*27)+'" x2="360" y2="'+(170+n*27)+'" stroke="var(--line)"/>';
+      if(n)grid+='<text x="'+(210+n*27)+'" y="186" text-anchor="middle" font-size="11" fill="var(--muted)">'+n+'</text><text x="197" y="'+(174-n*27)+'" text-anchor="end" font-size="11" fill="var(--muted)">'+n+'</text>';
     }
     const polygon=list=>list.map(p=>xy(p).join(',')).join(' ');
-    $('#geometry-plot').innerHTML='<svg viewBox="0 0 420 340" role="img" aria-label="Plano cartesiano com quadrado original e sua transformação">'+grid+'<path d="M50 170H375M210 10V330" stroke="#738780" stroke-width="1.5"/><text x="380" y="165" fill="#243b3c">x</text><text x="218" y="16" fill="#243b3c">y</text><polygon points="'+polygon(points)+'" fill="#7cae9a" fill-opacity=".2" stroke="#2f675c" stroke-width="2"/><polygon points="'+polygon(transformed)+'" fill="#8caec6" fill-opacity=".2" stroke="#467391" stroke-width="2" stroke-dasharray="6 4"/>'+points.map((p,i)=>'<text x="'+(xy(p)[0]+6)+'" y="'+(xy(p)[1]-7)+'" font-size="12" fill="#2f675c">'+('ABCD'[i])+'</text>').join('')+'</svg>';
+    $('#geometry-plot').innerHTML='<svg viewBox="0 0 420 340" role="img" aria-label="Plano cartesiano com quadrado original e sua transformação">'+grid+'<path d="M50 170H375M210 10V330" stroke="#91aba0" stroke-width="1.5"/><text x="380" y="165" fill="var(--text)">x</text><text x="218" y="16" fill="var(--text)">y</text><polygon points="'+polygon(points)+'" fill="var(--accent)" fill-opacity=".2" stroke="var(--accent)" stroke-width="2"/><polygon points="'+polygon(transformed)+'" fill="#9bbbd7" fill-opacity=".2" stroke="#9bbbd7" stroke-width="2" stroke-dasharray="6 4"/>'+points.map((p,i)=>'<text x="'+(xy(p)[0]+6)+'" y="'+(xy(p)[1]-7)+'" font-size="12" fill="var(--accent)">'+('ABCD'[i])+'</text>').join('')+'</svg>';
     $('#coordinates').textContent=transformed.map((p,i)=>'ABCD'[i]+'′('+p.join(', ')+')').join(' · ');
     $('#geometry-caption').textContent=mode==='reflect'?'Na reflexão no eixo y, (x,y) vira (−x,y). A figura fica espelhada.':mode==='rotate'?'Na rotação de 90° anti-horário em torno da origem, (x,y) vira (−y,x).':'Na translação, somamos os mesmos deslocamentos a todos os vértices: (x,y) vira (x+2,y+1).';
   }

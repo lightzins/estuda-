@@ -22,6 +22,8 @@ Abra `http://127.0.0.1:4174/`. Não há instalação, build, chave de API ou bac
 - `dashboard.js`: busca, filtros, cartões e links de revisão.
 - `app.css`: cores e layout compartilhados. `legacy-soft.css` adapta a oficina de poemas existente.
 
+O tema padrão é escuro, com superfícies em cinza, realces verdes suaves e campos, avisos de correção e gráficos adaptados à mesma paleta.
+
 Para adicionar uma matéria, use o mesmo identificador no catálogo e no conteúdo. Cada objeto em `assessments.av1` e `assessments.av2` contém `title`, `overview`, `topics`, `questions` e `videoQuery`. Um tópico contém `title`, `paragraphs`, `example` e `pitfall`. As questões têm `type`, `prompt`, `topic` e `explanation`, além dos campos específicos:
 
 - `choice`: quatro `choices` e um índice `correct` entre 0 e 3.
